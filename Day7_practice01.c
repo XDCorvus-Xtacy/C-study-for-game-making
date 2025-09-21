@@ -1,23 +1,20 @@
 /*
-getchar 함수를 호출하여 사용자로부터 영문 네 글자 이상을 입력받고,
-그중에서 두 번째 글자만 화면에 출력하려고 합니다. 다음 입출력 예를 보고
-같은 결과를 얻을 수 있도록 프로그램을 작성합니다.
+사용자로부터 두 정수를 입력받아 두 수의 평균을 계산하여 츌력하는 예제를 작성합니다. 
+사용자 입력은 scanf() 함수를 통해 받고, 출력은 printf() 함수를 이용해야 합니다. 
+단, 반그시 소수점 둘째 자리까지만 표시해야 하며, 변수는 2개만 선언합니다.
 */
 
 #include <stdio.h>
 
-int main(void){
-    int ch;
+int main(void) {
+    int a, b;
+    char buffer[100];
 
-    printf("입력 : ");
+    printf("두 정수를 입력하세요. : ");
+    fgets(buffer, sizeof(buffer), stdin);
+    sscanf(buffer, "%d %d", &a, &b);
 
-    //첫 번째 문자
-    ch = getchar();
-
-    //두 번째 문자
-    ch = getchar();
-
-    printf("출력 : %c\n", ch);
+    printf("AVG : %.2f\n", (a + b) / 2.0);
 
     return 0;
 }
