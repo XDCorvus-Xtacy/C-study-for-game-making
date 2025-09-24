@@ -16,6 +16,7 @@ int main(void)
     nResult = ++x;
     printf("%d, %d\n", nResult, x);
 
+    //x의 값을 nResult에 대입한 후 x를 1 감소시킨다(후위식 표기).
     nResult = x--;
     printf("%d, %d\n", nResult, x);
     return 0;
