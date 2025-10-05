@@ -1,19 +1,22 @@
 #include <stdio.h>
 
 int main(void) {
-    int i = 0, j = 0, k = 0;
+    int height = 0;
+    char buffer[100];
     
-    for (i=1; i<=5; i++) {
-        for (j=4; j>=i; j--) {
+    printf("피라미드의 높이를 결정하세요. : ");
+    fgets(buffer, sizeof(buffer), stdin);
+    sscanf(buffer, "%d", &height);
+
+    
+    for (int i=1; i<=height; i++) {
+        for (int j=height; j>i; j--) {
             printf("  ");
         }
-
-        for (k=1; k<=i; k++) {
+        for (int k=1; k<=i; k++) {
             printf("* ");
         }
-
-        putchar('\n');
+        printf("\n");
     }
-
     return 0;
 }
