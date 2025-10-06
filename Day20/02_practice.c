@@ -13,7 +13,12 @@
 
 int main(void)
 {
-    int height = 5;
+    int height = 0;
+    char buffer[100];
+
+    printf("피라미드의 높이 입력 : ");
+    fgets(buffer, sizeof(buffer), stdin);
+    sscanf(buffer, "%d", &height);
 
     for (int i=1; i<=height; i++)       //layer 구성
     {
