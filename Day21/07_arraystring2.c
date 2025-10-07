@@ -14,6 +14,6 @@ int main(void)
         nLength++;
 
     //이름과 문자열의 길이를 출력한다.
-    printf("YOur name is %s(%d).\n", szBuffer, nLength);
+    printf("Your name is %s(%d).\n", szBuffer, nLength);
     return 0;
 }
