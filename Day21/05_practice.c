@@ -9,12 +9,11 @@ int main(void)
     {
         if (aList[0] > aList[i])
         {
+            nTmp = aList[0];
             aList[0] = aList[i];
-            nTmp = i;
+            aList[i] = nTmp;
         }
     }
-
-    aList[nTmp] = 30;
 
     for (i=0; i<5; ++i)
         printf("%d\t", aList[i]);
