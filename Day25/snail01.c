@@ -12,16 +12,32 @@
 
 int main(void)
 {
-    int aList[5][5] = {0};
+    char buffer[100];
+    int nInput = 0;
+
+    printf("원하는 크기를 입력하세요. : ");
+    fgets(buffer, sizeof(buffer), stdin);
+    sscanf(buffer, "%d", &nInput);
+
+    int aList[nInput][nInput];
     int x = -1, y =0, nCounter = 0;
-    int i = 0, j =0, nDirection = 1;
+    int i = 0, j =0, nDirection = 1, nLength = 0;
+
+    //aList 채우기
+    for (i=0;i<nInput;i++)
+    {
+        for (j=0;j<nInput;j++)
+        {
+            aList[i][j] = 0;
+        }
+    }
     
-    for (nLength = 9; nLength > 0; nLength -=2)
+    for (nLength = nInput*2-1; nLength > 0; nLength -=2)
     {
         for (i = 0; i < nLength; i++)
         {
             if (i < nLength/2 + 1)  x += nDirection;
-            else                    y += -nDirection;
+            else                    y += nDirection;
             
             aList[y][x] = ++nCounter;
         }
@@ -29,9 +45,9 @@ int main(void)
         nDirection = -nDirection;
     }
     
-    for (i=0;i<5;i++)
+    for (i=0;i<nInput;i++)
     {
-        for (j=0;j<5;j++)
+        for (j=0;j<nInput;j++)
         {
             printf("%d\t", aList[i][j]);
         }
