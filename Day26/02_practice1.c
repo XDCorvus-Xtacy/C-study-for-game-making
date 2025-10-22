@@ -15,6 +15,7 @@ int main(void)
     int arr[5][5] = {0};
     
     
+    /*
     //solution 1
     for (i=0; i<5; i++)
     {
@@ -23,6 +24,20 @@ int main(void)
             if (i%2 == 0)   arr[j][i] = ++nCounter;
             else            arr[4-j][i] = ++nCounter;
         }
+    }
+    */
+
+
+    //solution 2
+    for (i=0; i<5; i++)
+    {
+        for (j=0; j<5; j++)
+        {
+            arr[y][i] = ++nCounter;
+            y += nDirection;
+        }
+        nDirection = -nDirection;
+        y += nDirection;
     }
     
     
