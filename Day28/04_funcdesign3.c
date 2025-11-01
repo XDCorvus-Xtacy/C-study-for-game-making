@@ -9,7 +9,7 @@ int GetResult(void)
     fgets(buffer, sizeof(buffer), stdin);
     sscanf(buffer, "%d", &nResult);
 
-    if (nResult < 0 || nResult > 100)   return 1;
+    if (nResult < 0 || nResult > 100)   return -1;
     
     return nResult;
 }
@@ -33,7 +33,7 @@ int main(void)
     while(1)
     {
         nResult = GetResult();
-        if (nResult == 1)
+        if (nResult == -1)
             printf("범위(0~100)에 맞는 수를 입력하세요.\n");
         else break;
     }
