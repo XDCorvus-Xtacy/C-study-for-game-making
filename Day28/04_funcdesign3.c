@@ -8,19 +8,21 @@ int GetResult(void)
     printf("성적(0~100)을 입력하세요. : ");
     fgets(buffer, sizeof(buffer), stdin);
     sscanf(buffer, "%d", &nResult);
+
+    if (nResult < 0 || nResult > 100)   return 1;
     
     return nResult;
 }
 
 //학점을 계산하는 기능
-char GetGrade(int nScure)
+char GetGrade(int nScore)
 {
     if (nScore >= 90)   return 'A';
     else if (nScore >= 80)  return 'B';
     else if (nScore >= 70)  return 'C';
     else if (nScore >= 60)  return 'D';
 
-    return F;
+    return 'F';
 }
 
 //프로그램의 전체적 흐름
@@ -31,7 +33,7 @@ int main(void)
     while(1)
     {
         nResult = GetResult();
-        if (nResult < 0 || nResult > 100)
+        if (nResult == 1)
             printf("범위(0~100)에 맞는 수를 입력하세요.\n");
         else break;
     }
