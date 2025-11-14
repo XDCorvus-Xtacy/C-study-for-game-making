@@ -24,11 +24,3 @@ int main(void)
     free(pNewList);
     return 0;
 }
-
-/*
-질문
-
-1. calloc()은 무슨 뜻이고 어떨 때 쓰이고 어떻게 쓰는 것인가?
-2. calloc()이 malloc() 상위호환 같은데 왜 둘 다 쓰이는가
-3. init의 뜻은 무엇인가
-*/
