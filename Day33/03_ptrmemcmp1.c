@@ -16,10 +16,3 @@ int main(void)
     printf("%d\n", memcmp("DataString", pszData, 10));
     return 0;
 }
-
-/*
-질문
-
-1. memcmp()가 메모리의 크기를 비교하는 방법
-2. memcmp()의 역할이 정확이 무엇이고 언제 사용하는지
-*/
