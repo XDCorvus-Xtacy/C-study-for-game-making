@@ -12,7 +12,9 @@ default:
 		echo "사용법: make DIR=폴더명 FILE=파일명.c ARGS=\"인자들\""; \
 		exit 1; \
 	fi
-	$(CC) $(DIR)/$(FILE) -o $(OUT) && ./$(OUT) $(ARGS)
+	$(CC) $(DIR)/$(FILE) -o $(OUT)
+#	@echo ARGS = [$(ARGS)]
+	@sh -c "./$(OUT) $(ARGS)"
 
 # ==========================================
 clean:
