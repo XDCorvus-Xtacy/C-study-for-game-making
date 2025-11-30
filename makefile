@@ -1,22 +1,19 @@
 # 컴파일러
 CC = clang
-
 # 기본 출력 파일명
 OUT = program
 
 # ==========================================
 # 특정 날짜 폴더 + 특정 C파일 빌드 및 실행
-# 사용법: make DIR=Day36 FILE=main.c
+# 사용법: make DIR=Day36 FILE=main.c ARGS="인자들"
 # ==========================================
 default:
 	@if [ -z "$(DIR)" ] || [ -z "$(FILE)" ]; then \
-		echo "사용법: make DIR=폴더명 FILE=파일명.c"; \
+		echo "사용법: make DIR=폴더명 FILE=파일명.c ARGS=\"인자들\""; \
 		exit 1; \
 	fi
-	$(CC) $(DIR)/$(FILE) -o $(OUT) && ./$(OUT)
+	$(CC) $(DIR)/$(FILE) -o $(OUT) && ./$(OUT) $(ARGS)
 
-# ==========================================
-# 실행 파일 삭제
 # ==========================================
 clean:
 	rm -f $(OUT)
