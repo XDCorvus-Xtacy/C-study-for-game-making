@@ -19,12 +19,36 @@
 
 int main(void)
 {
-    int len = 0;
     char szBuffer[100];
 
+    //첫 문자열 Input
     printf("Input: ");
     fgets(szBuffer, sizeof(szBuffer), stdin);
-    len = strlen(szBuffer);
+    szBuffer[strcspn(szBuffer, "\n")] = '\0';
 
-    char *pszBuffer =  malloc(sizeof(char)*(len+1))
+    //길이 계산 + 동적 할당
+    int len1 = strlen(szBuffer);
+    char *pszBuffer = malloc(sizeof(char)*(len1+1));
+    strcpy(pszBuffer, szBuffer);
+
+    printf("%s\n", pszBuffer);
+
+    //다음 문자열 Input
+    printf("Input : ");
+    fgets(szBuffer, sizeof(szBuffer), stdin);
+    szBuffer[strcspn(szBuffer, "\n")] = '\0';
+
+    int len2 = strlen(szBuffer);
+
+    //메모리 재할당
+    pszBuffer = realloc(pszBuffer, sizeof(char)*(len1 + len2 + 1));
+
+    //이어붙이기
+    strcpy(pszBuffer + len1, szBuffer);
+    
+    printf("%s\n", pszBuffer);
+
+    free(pszBuffer);
+
+    return 0;
 }
