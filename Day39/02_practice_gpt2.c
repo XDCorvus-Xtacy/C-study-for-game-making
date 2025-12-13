@@ -39,6 +39,19 @@ int GetNumber(void)
     return num;
 }
 
+char* CopyString(char* dest, const char* src)
+{
+    int i = 0;
+    while (src[i] != '\0')
+    {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+    return dest;
+}
+
+
 int main(void)
 {
     int num = 0;
@@ -60,25 +73,27 @@ int main(void)
         fgets(szBuffer, sizeof(szBuffer), stdin);
         szBuffer[strcspn(szBuffer, "\n")] = '\0';
 
-        strcpy(pszBuffer[i], szBuffer);
+        CopyString(pszBuffer[i],szBuffer);
     }
 
     char* merged_string = malloc(strlen(pszBuffer[0]));
-    strcpy(merged_string, pszBuffer[0]);
+    CopyString(merged_string, pszBuffer[0]);
     int merged_len = strlen(pszBuffer[0]);
 
     for (int i=1; i<num; i++)
     {
-        merged_string = realloc(
-            merged_string, merged_len + strlen(pszBuffer[i]) + 1);
+        int cur_len = strlen(pszBuffer[i]);
 
-        for (int j=0; j<strlen(pszBuffer[i]); j++)
+        merged_string = realloc(
+            merged_string, merged_len + cur_len + 1);
+
+        for (int j=0; j<cur_len; j++)
         {
             merged_string[merged_len + j] = pszBuffer[i][j];
         }
 
-        merged_string[strlen(merged_string)] = '\0';
-        merged_len += strlen(pszBuffer[i]);
+        merged_len += cur_len;
+        merged_string[merged_len] = '\0';
     }
 
     printf("\n[Result]\n%s\n", merged_string);
@@ -91,14 +106,3 @@ int main(void)
 
     return 0;
 }
-
-/*
-질문
-1. strcpy()의 역할은 무엇이지? 어떻게 동작하는 함수이지?
-2. strcspn은 무엇의 줄임말이지?
-3. realloc()을 하기 전에 무조건 malloc()이 선행되어야 하나?
-4. char* merged_string = malloc(strlen(pszBuffer[0]));
-merged_string = pszBuffer[0];
-이런 식으로 코드를 작성하면 안 되나? 안 된다면 이런 식으로 작성하면 안 되는 이유를 설명해줘
-5. 
-*/
