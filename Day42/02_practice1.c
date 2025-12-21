@@ -7,12 +7,17 @@ MyStrcpy() 함수를 작성합니다. main() 함수의 코드와 실행결과가
 
 #include <stdio.h>
 
-void MyStrcpy(char* dest, int size, char* src)
+void MyStrcpy(char* dest, int size, const char* src)
 {
-    for (int i = 0; i < size; i++)
+    int i = 0;
+
+    while (src[i] != '\0' && i < size - 1)
     {
         dest[i] = src[i];
+        i++;
     }
+
+    dest[i] = '\0';
 }
 
 int main(int argc, char* argv[])
