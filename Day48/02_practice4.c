@@ -8,23 +8,25 @@
 #include <stdio.h>
 #include <string.h>
 
-int StrICmp(char* src, char* dest)
+int StrICmp(const char* src, const char*dest)
 {
-    int len_src = strlen(src);
-    int len_dest = strlen(dest);
-
-    if (len_src == len_dest)
+    while (*src != '\0' && *dest != '\0')
     {
-        int num = 0;
-        while (num < len_src)
-        {
-            if (src[num] == dest[num] || src[num] == dest[num]-32)
-                ++num;
-            else    return 1;
-        }
-        return 0;
+        char c1 = *src, c2 = *dest;
+
+        if (c1 >= 'A' && c1 <= 'Z')
+            c1 = c1 - 'A' +'a';
+        if (c2 >= 'A' && c2 <= 'Z')
+            c2 = c2 - 'A' + 'a';
+
+        if (c1 != c2)   
+            return 1;
+
+        ++src;
+        ++dest;
     }
-    else    return 1;
+
+    return (*src == '\0' && *dest == '\0') ? 0 : 1;
 }
 
 int main(void)
