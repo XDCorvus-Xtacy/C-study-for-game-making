@@ -14,8 +14,10 @@ USERDATA GetUserData(void)
     USERDATA user = {0};
     //%*c는 '\n'을 제거하기 위한 것이다.
     scanf("%d%*c", &user.nAge);
-    fgets(user.szName, sizeof(user.szName));
-    fgets(user.szPhone, sizeof(user.szPhone));
+    fgets(user.szName, sizeof(user.szName), stdin);
+    user.szName[strlen(user.szName) - 1] = '\0';
+    fgets(user.szPhone, sizeof(user.szPhone), stdin);
+    user.szPhone[strlen(user.szPhone) - 1] = '\0';
     return user;
 }
 
